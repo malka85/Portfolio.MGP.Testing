@@ -9,4 +9,4 @@ Portfolio of my testing adventure.
 - project2
 - project3
 
-# music on the block
+![smieszny obrazek](./images/testing.jpg)
