@@ -1,0 +1,948 @@
+{
+	"info": {
+		"_postman_id": "8129f1de-6c5d-4e25-87a1-478d6902de43",
+		"name": "TRELLO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25664040"
+	},
+	"item": [
+		{
+			"name": "board",
+			"item": [
+				{
+					"name": "get board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"idBoard\", jsonData[0][\"id\"]);\r",
+									"\r",
+									"    console.log(\"będę korzystać z tego idBoard\" + jsonData[0][\"id\"]);\r",
+									"}\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 300ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Malka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/members/me/boards",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"members",
+								"me",
+								"boards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lists",
+			"item": [
+				{
+					"name": "create new list 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębij Id listy z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idList1\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idList1\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"sprawdzenie, nazwy listy\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"lista pierwsza\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lista pierwsza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/boards/{{idBoard}}/lists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{idBoard}}",
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new list 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębij Id listy z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idList2\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idList2\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"sprawdzenie, nazwy listy\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"lista druga\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lista druga\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/boards/{{idBoard}}/lists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{idBoard}}",
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new list 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębij Id listy z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idList3\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idList3\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"sprawdzenie, nazwy listy\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"lista trzecia\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lista trzecia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/boards/{{idBoard}}/lists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"boards",
+								"{{idBoard}}",
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update name a list 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"sprawdzenie, czy została utworzona nowa nazwa listy\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"{{NowaNazwaListy3}}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{NowaNazwaListy3}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/lists/{{idList3}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"lists",
+								"{{idList3}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archive/closed a list 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"sprawdzenie, czy lista prawidłowo się archiwizuje/zamyka\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.closed).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/lists/{{idList2}}/closed?value=true",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"lists",
+								"{{idList2}}",
+								"closed"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cards",
+			"item": [
+				{
+					"name": "create new card 1 to list 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębnij Id Karty z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idCard1\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idCard1\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    pm.test(\"Sprawdzenie, nazwy karty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"karta 1\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karta 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList={{idList1}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new card 2 to list 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębnij Id Karty z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idCard2\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idCard2\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie, nazwy karty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"karta 2\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karta 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList={{idList1}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new card 3 to list 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębnij Id Karty z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idCard3\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idCard3\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie, nazwy karty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"karta 3\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karta 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList={{idList1}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new card 4 to list 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębnij Id Karty z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idCard4\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idCard4\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie, nazwy karty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"karta 4\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karta 4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList={{idList1}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new card 5 to list 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//wyodrębnij Id Karty z odpowiedzi i zapisz do zmiennej w środowisku\r",
+									"{\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    pm.environment.set(\"idCard5\", jsonData.id);\r",
+									"\r",
+									"    console.log(\"bede używała tego idCard5\"+jsonData.id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie, nazwy karty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"karta 5\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karta 5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards?idList={{idList1}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update name a card 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie, czy zaktualizowano nazwę karty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"{{NowaNazwaKarty5}}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{NowaNazwaKarty5}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards/{{idCard5}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{idCard5}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a card 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie poprawnego usunięcia karty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.eql({ limits: {} });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/card/{{idCard1}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"card",
+								"{{idCard1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archive/closed a card 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Sprawdzenie, czy prawidłowo zarchiwizowano kartę 3\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.closed).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/card/{{idCard3}}/closed?value=true",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"card",
+								"{{idCard3}}",
+								"closed"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "move a single card 2 to list 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie, czy karta 2 przeniesiona została na liste 3\", function () {\r",
+									"    pm.expect(pm.response.json().idList).to.eql(pm.environment.get(\"idList3\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karta 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards/{{idCard2}}?idList={{idList3}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{idCard2}}"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{idList3}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a checklist to card 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Sprawdzenie utworzenia checklisty na karcie\", function () {\r",
+									"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"checklista na karcie 4\",\r\n    \"id\":\"{{idList3}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.trello.com/1/cards/{{idCard4}}/checklists?",
+							"protocol": "https",
+							"host": [
+								"api",
+								"trello",
+								"com"
+							],
+							"path": [
+								"1",
+								"cards",
+								"{{idCard4}}",
+								"checklists"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.url.query.add(\"key={{key}}\")",
+					"pm.request.url.query.add(\"token={{token}}\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
